@@ -1,42 +1,42 @@
-while True:
-    num1 = (input())
-    num2 = (input())
+def get_numbers():
+    while True:
+        try:
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+            return num1, num2
+        except:
+            print("Invalid number! Please try again.\n")
 
-    try:
-        num1=float(num1)
-        num2=float(num2)
-    except:
-        print("Enter a Valid Number")
-        continue
 
-    Choose=input("Enter Arthematic Operation. (add/sub/multi/divd): ").lower()
-    if Choose not in ["add","sub","multi","divd"]:
-        print("Error : Enter valid input")
-        continue
-
-    else:
-        print("Calculating...")
-    
-    if Choose == "add":
-        print(num1+num2)
-    elif Choose == "sub":
-        print(num1-num2)
-    elif Choose == "multi":
-        print(num1*num2)
-    else:
+def calculate(num1, operation, num2):
+    if operation == "add":
+        return num1 + num2
+    elif operation == "sub":
+        return num1 - num2
+    elif operation == "multi":
+        return num1 * num2
+    elif operation == "divd":
         if num2 == 0:
-            print("cannot be divided by 0")
-        else:
-            print(num1/num2)
-    ask=input("Continue? (yes/no)").lower()
+            return "Cannot divide by 0"
+        return num1 / num2
 
-    if ask == "yes":
-        continue
-    elif ask == "no":
-        print("Program Ended.")
-        break
-    else:
-        print("Invalid input. Exiting.")
-        break
+
+def main():
+    while True:
+        num1, num2 = get_numbers()
+
+        operation = input("Enter operation (add/sub/multi/divd): ").lower()
+
+        if operation not in ["add", "sub", "multi", "divd"]:
+            print("Invalid operation!\n")
+            continue
+
+        result = calculate(num1, operation, num2)
+        print("Result:", result)
+
+        ask = input("Continue? (yes/no): ").lower()
+        if ask == "no":
+            print("Program Ended.")
+            break
 
             
