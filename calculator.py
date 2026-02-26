@@ -31,12 +31,18 @@ def main():
             print("Invalid operation!\n")
             continue
 
-        result = calculate(num1, operation, num2)
+        result = calculate(num1, num2, operation)
         print("Result:", result)
 
-        ask = input("Continue? (yes/no): ").lower()
-        if ask == "no":
-            print("Program Ended.")
-            break
+        while True:
+            ask = input("Continue? (yes/no): ").lower()
+    
+            if ask == "yes":
+                break
+            elif ask == "no":
+                print("Program Ended.")
+                return
+            else:
+                print("Invalid input. Please type yes or no.")
 
             
